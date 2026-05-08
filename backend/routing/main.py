@@ -13,9 +13,6 @@ async def root():
 @app.get("/weather/currentlocation")
 async def weather(lat: str, long: str,):
     settings = Settings()
-
-    print(f"Received request for weather data at lat={lat}, long={long}")
-
     url = f"{settings.weather_endpoint}?latitude={lat}&longitude={long}&timezone=auto&hourly=temperature_2m"
     async with httpx.AsyncClient() as client:
         try:
